@@ -17,6 +17,9 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/books">Books</a></li>
+    </ul>
     <p class="navbar-text pull-right">
       <% if user_signed_in? %>
         Logged in as <strong><%= current_user.email %></strong>.
