@@ -6,13 +6,12 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(_resource)
-    if current_user
-      flash[:notice] = 'ログインに成功しました'
-      books_path
-    else
-      flash[:notice] = '新規登録完了しました'
-      books_path
-    end
+    flash[:notice] = if current_user
+                       'ログインに成功しました'
+                     else
+                       '新規登録完了しました'
+                     end
+    books_path
   end
 
   def after_sign_out_path_for(_resource)
