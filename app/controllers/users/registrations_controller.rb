@@ -21,14 +21,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @user = User.find(current_user.id)
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    user = User.find(current_user.id)
+    if user.update_without_password(user_params)
+      redirect_to action: :show, notice: '更新しました'
+    else
+      render :edit
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -68,6 +73,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :postal_code, :street_address, :self_introduction)
+    params.require(:user).permit(:email, :password, :password_confirmation, :postal_code, :street_address, :self_introduction)
+  end
+
+  protected
+
+  def update_resource(resource, params)
+    if params[:password].present? && params[:password_confirmation].present?
+      resource.update(params)
+    else
+      resource.update_without_password(params)
+    end
   end
 end
