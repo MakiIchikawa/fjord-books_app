@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: '登録しました'
+      redirect_to new_user_session_path, notice: '登録しました'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     user = User.find(current_user.id)
     if user.update_without_password(user_params)
-      redirect_to action: :show, notice: '更新しました'
+      redirect_to users_show_path(user), notice: '更新しました'
     else
       render :edit
     end
