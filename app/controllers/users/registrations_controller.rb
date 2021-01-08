@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     user = User.find(current_user.id)
     if user.update_without_password(user_params)
-      redirect_to users_show_path(user), notice: '更新しました'
+      redirect_to user_path(user), notice: '更新しました'
     else
       render :edit
     end
