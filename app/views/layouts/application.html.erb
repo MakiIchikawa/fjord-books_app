@@ -17,19 +17,22 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/books">Books</a></li>
-    </ul>
-    <p class="navbar-text pull-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
-    <% end %>
-  </p>
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item m-2">Logged in as <strong><%= current_user.email %></strong></li>
+          <li class="nav-item m-2"><%= link_to 'Books', books_path, class: 'navbar-link' %></li>
+          <li class="nav-item m-2"><%= link_to 'Users', users_path, class: 'navbar-link' %></li>
+          <li class="nav-item m-2"><%= link_to 'My Account', user_path(current_user), class: 'navbar-link' %></li>
+          <li class="nav-item m-2"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %></li>
+        <% else %>
+          <li class="nav-item m-2"><%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %></li>
+          <li class="nav-item m-2"><%= link_to "Login", new_user_session_path, class: 'navbar-link'  %></li>
+        <% end %>
+          </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
