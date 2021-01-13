@@ -7,7 +7,7 @@
       <th><%= User.human_attribute_name(:postal_code) %></th>
       <th><%= User.human_attribute_name(:street_address) %></th>
       <th><%= User.human_attribute_name(:self_introduction) %></th>
-      <th colspan="2"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -19,7 +19,6 @@
         <td><%= user.street_address %></td>
         <td><%= user.self_introduction %></td>
         <td><%= link_to t('views.common.show'), user %></td>
-        <td><%= link_to t('views.common.edit'), edit_user_registration_path(user) %></td>
       </tr>
     <% end %>
   </tbody>
