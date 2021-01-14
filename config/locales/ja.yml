@@ -227,18 +227,20 @@ ja:
       delete_confirm: よろしいですか？
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
+      sign_up: アカウント登録
     pagination:
       first: '最初'
       last: '最後'
       previous: '前'
       next: '次'
       truncate: '...'
-    navbar:
+    links:
       my_account: アカウント
       log_out: ログアウト
       log_in: ログイン
-      sign_up: アカウント登録
       logged_as: "%{email}でログインしています。"
+      forgot_password: パスワードを忘れましたか？
+      confirmation_instructions: アカウントの確認メールを受け取っていませんか？
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
