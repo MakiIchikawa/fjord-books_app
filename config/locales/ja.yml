@@ -238,6 +238,7 @@ ja:
       log_out: ログアウト
       log_in: ログイン
       sign_up: アカウント登録
+      logged_as: "%{email}でログインしています。"
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
