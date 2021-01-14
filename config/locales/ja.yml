@@ -7,6 +7,18 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      user: ユーザ
+    attributes:
+      user:
+        email: Eメール
+        password: パスワード
+        password_confirm: パスワード（確認用）
+        create_at: 登録日時
+        update_at: 更新日時
+        postal_code: 郵便番号
+        street_address: 住所
+        self_introduction: 自己紹介
   date:
     abbr_day_names:
     - 日
@@ -221,6 +233,11 @@ ja:
       previous: '前'
       next: '次'
       truncate: '...'
+    navbar:
+      my_account: アカウント
+      log_out: ログアウト
+      log_in: ログイン
+      sign_up: アカウント登録
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
