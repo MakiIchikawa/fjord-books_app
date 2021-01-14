@@ -87,4 +87,8 @@ Rails.application.configure do
     :password => ENV['L_password'],
     :authentication => 'login'
   }
+
+  config.action_mailer.perform_caching = true
+  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.perform_deliveries = true
 end
