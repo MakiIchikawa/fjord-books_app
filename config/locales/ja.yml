@@ -7,18 +7,18 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-    models:
-      user: ユーザ
     attributes:
       user:
-        email: Eメール
-        password: パスワード
-        password_confirm: パスワード（確認用）
-        create_at: 登録日時
-        update_at: 更新日時
         postal_code: 郵便番号
         street_address: 住所
         self_introduction: 自己紹介
+
+  devise:
+    shared:
+      links:
+        my_account: アカウント
+        log_out: ログアウト
+
   date:
     abbr_day_names:
     - 日
@@ -234,13 +234,6 @@ ja:
       previous: '前'
       next: '次'
       truncate: '...'
-    links:
-      my_account: アカウント
-      log_out: ログアウト
-      log_in: ログイン
-      logged_as: "%{email}でログインしています。"
-      forgot_password: パスワードを忘れましたか？
-      confirmation_instructions: アカウントの確認メールを受け取っていませんか？
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
