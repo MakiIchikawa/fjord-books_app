@@ -3,8 +3,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+
   devise_scope :user do
-    get 'sign_up', to: 'devise/registrations#new'
+    get 'sign_up', to: 'users/registrations#new'
   end
 
   resources :users, :only => [:index, :show]
