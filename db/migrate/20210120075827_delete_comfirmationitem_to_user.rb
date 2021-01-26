@@ -2,16 +2,16 @@
 
 class DeleteComfirmationitemToUser < ActiveRecord::Migration[6.1]
   def up
-    change_column :users, :confirmation_token, :string
-    change_column :users, :confirmed_at, :datetime
-    change_column :users, :confirmation_sent_at, :datetime
-    change_column :users, :unconfirmed_email, :string
+    remove_column :users, :confirmation_token, :string
+    remove_column :users, :confirmed_at, :datetime
+    remove_column :users, :confirmation_sent_at, :datetime
+    remove_column :users, :unconfirmed_email, :string
   end
 
   def down
-    change_column :users, :confirmation_token, :string
-    change_column :users, :confirmed_at, :datetime
-    change_column :users, :confirmation_sent_at, :datetime
-    change_column :users, :unconfirmed_email, :string
+    add_column :users, :confirmation_token, :string
+    add_column :users, :confirmed_at, :datetime
+    add_column :users, :confirmation_sent_at, :datetime
+    add_column :users, :unconfirmed_email, :string
   end
 end

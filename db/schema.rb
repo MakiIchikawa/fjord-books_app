@@ -32,10 +32,6 @@ ActiveRecord::Schema.define(version: 2021_01_20_075827) do
     t.string "postal_code"
     t.text "street_address"
     t.text "self_introduction"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
