@@ -14,4 +14,8 @@ class User < ApplicationRecord
       user.save!
     end
   end
+
+  def email_required?
+    !uid.nil?
+  end
 end
