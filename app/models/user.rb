@@ -16,6 +16,6 @@ class User < ApplicationRecord
   end
 
   def email_required?
-    !uid.nil?
+    uid.nil?
   end
 end
