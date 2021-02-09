@@ -239,3 +239,4 @@ ja:
     registrations:
       edit:
         title: "アカウント編集"
+        current_password: "パスワード変更を反映するには現在のパスワードを入力してください"

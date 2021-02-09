@@ -18,4 +18,16 @@ class User < ApplicationRecord
   def email_required?
     uid.nil?
   end
+
+  def update_without_current_password(params)
+    params.delete(:current_password)
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    clean_up_passwords
+    update(params)
+  end
 end
