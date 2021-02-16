@@ -3,7 +3,9 @@
 class RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(current_user.id)
-    if @user.update_without_current_password(user_params)
+    if user_params[:password].present?
+      super
+    elsif @user.update_without_current_password(user_params)
       redirect_to @user, notice: t('controllers.common.notice_update', name: User.model_name.human)
     else
       render :edit
