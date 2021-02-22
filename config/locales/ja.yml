@@ -226,7 +226,9 @@ ja:
       truncate: '...'
     relationship:
       following: 'フォロー中'
-      follow: 'フォローする' 
+      follow: 'フォローする'
+      followings: 'フォロー'
+      followers: 'フォロワー'
       confirm: 'フォローを解除しますか？'
 
   controllers:
