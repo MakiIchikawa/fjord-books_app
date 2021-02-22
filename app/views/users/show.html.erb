@@ -35,5 +35,9 @@
 
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
+<% elsif current_user.followings.include?(@user) %>
+  <%= button_to t('views.relationship.following'), {controller: 'relationships', action: 'destroy'}, method: :delete, params: {id: @user.id}, data: { confirm: t('views.relationship.confirm')} %>
+<% else %>
+  <%= button_to t('views.relationship.follow'), {controller: 'relationships', action: 'create'}, method: :post, params: {id: @user.id} %>
 <% end %>
 <%= link_to t('views.common.back'), users_path %>
