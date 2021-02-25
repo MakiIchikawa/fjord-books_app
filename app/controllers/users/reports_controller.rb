@@ -27,14 +27,10 @@ class Users::ReportsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @report.update(report_params)
-        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
-        format.json { render :show, status: :ok, location: @report }
-      else
-        format.html { render :edit }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
-      end
+    if @report.update(report_params)
+      redirect_to user_report_path(@report.created_by.id, @report.id), notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    else
+      render :edit
     end
   end
 
