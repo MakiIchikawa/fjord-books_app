@@ -20,6 +20,7 @@
   <%= @report.content %>
 </p>
 
-
-<%= link_to t('views.common.edit'), edit_user_report_path(@report.id, created_by.id) %> |
+<% if current_user == created_by %>
+  <%= link_to t('views.common.edit'), edit_user_report_path(@report.id, created_by.id) %> |
+<% end %>
 <%= link_to t('views.common.back'), reports_path %>
