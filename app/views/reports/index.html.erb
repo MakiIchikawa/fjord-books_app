@@ -21,7 +21,7 @@
           <%= created_by.name.present? ? created_by.name : created_by.email %>
         </td>
         <td><%= report.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-        <td><%= link_to t('views.common.show'), user_reports_path(report, report.created_by) %></td>
+        <td><%= link_to t('views.common.show'), user_report_path(created_by.id, report.id) %></td>
         <% if current_user == created_by %>
           <td><%= link_to t('views.common.edit'), edit_user_report_path(report, report.created_by) %></td>
           <td><%= link_to t('views.common.destroy'), user_report_path(report, report.created_by), method: :delete, data: { confirm: 'Are you sure?' } %></td>
