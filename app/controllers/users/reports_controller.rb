@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ReportsController < ApplicationController
+class Users::ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
 
   # GET /reports
@@ -25,15 +25,12 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
+    @report.created_by_id = current_user.id
 
-    respond_to do |format|
-      if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
-        format.json { render :show, status: :created, location: @report }
-      else
-        format.html { render :new }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
-      end
+    if @report.save
+      redirect_to user_report_path(@report, @report.created_by), notice: t('controllers.common.notice_create', name: Report.model_name.human)
+    else
+      render :new
     end
   end
 
@@ -70,6 +67,6 @@ class ReportsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def report_params
-    params.require(:report).permit(:title, :content, :created_by_id)
+    params.require(:report).permit(:title, :content)
   end
 end

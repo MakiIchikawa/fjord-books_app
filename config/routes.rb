@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     scope module: :users do
-      resources :reports, only: %i[index new show edit destroy]
+      resources :reports
     end
   end
 

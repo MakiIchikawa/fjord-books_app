@@ -1,4 +1,4 @@
-<%= form_with(model: report) do |form| %>
+<%= form_with(model: [:user, report]) do |form| %> 
   <% if report.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
@@ -20,11 +20,11 @@
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
-
+<%# 
   <div class="field">
     <%= form.label :created_by_id %>
-    <%= form.text_field :created_by_id %>
-  </div>
+    <%# <%= form.text_field :created_by_id %>
+  <%# </div>  %> 
 
   <div class="actions">
     <%= form.submit %>

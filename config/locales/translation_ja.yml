@@ -18,6 +18,7 @@ ja:
         avatar: ユーザ画像
       report:
           title: タイトル
+          content: 本文
           created_by: 作成者
           created_at: 作成日
 

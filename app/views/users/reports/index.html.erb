@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= Report.model_name.human %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Report.human_attribute_name(:title) %></th>
+      <th><%= Report.human_attribute_name(:created_by) %></th>
+      <th><%= Report.human_attribute_name(:created_at) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.title %></td>
+        <td>
+          <% created_by = report.created_by%>
+          <%= created_by.name.present? ? created_by.name : created_by.email %>
+        </td>
+        <td><%= report.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= link_to t('views.common.show'), user_report_path(report, report.created_by) %></td>
+        <% if current_user == created_by %>
+          <td><%= link_to t('views.common.edit'), edit_user_report_path(report, report.created_by) %></td>
+          <td><%= link_to t('views.common.destroy'), user_report_path(report, report.created_by), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('views.common.new'), new_user_report_path(current_user) %>
