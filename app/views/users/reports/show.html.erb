@@ -21,6 +21,6 @@
 </p>
 
 <% if current_user == created_by %>
-  <%= link_to t('views.common.edit'), edit_user_report_path(@report.id, created_by.id) %> |
+  <%= link_to t('views.common.edit'), edit_user_report_path(created_by.id, @report.id) %> |
 <% end %>
 <%= link_to t('views.common.back'), reports_path %>
