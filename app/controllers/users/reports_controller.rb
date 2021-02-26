@@ -4,7 +4,9 @@ class Users::ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
 
   def index
-    @reports = Report.all
+    created_by_id = params[:user_id]
+    records = Report.where(created_by_id: created_by_id.to_i)
+    @reports = Report.find(records.pluck(:id))
   end
 
   def show; end

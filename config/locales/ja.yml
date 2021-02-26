@@ -232,6 +232,7 @@ ja:
     show:
       followings: "%{count} フォロー"
       followers: "%{count} フォロワー"
+      reports: "%{count} 日報"
       create: フォローする
       destroy: フォロー解除する
     followings:
