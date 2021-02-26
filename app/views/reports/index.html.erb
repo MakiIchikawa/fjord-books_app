@@ -24,7 +24,7 @@
         <td><%= link_to t('views.common.show'), user_report_path(created_by.id, report.id) %></td>
         <% if current_user == created_by %>
           <td><%= link_to t('views.common.edit'), edit_user_report_path(created_by.id, report.id) %></td>
-          <td><%= link_to t('views.common.destroy'), user_report_path(report, report.created_by), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to t('views.common.destroy'), user_report_path(created_by.id, report.id), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
         <% end %>
       </tr>
     <% end %>
