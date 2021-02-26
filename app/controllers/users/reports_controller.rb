@@ -20,7 +20,7 @@ class Users::ReportsController < ApplicationController
     @report.created_by_id = current_user.id
 
     if @report.save
-      redirect_to user_report_path(@report, @report.created_by), notice: t('controllers.common.notice_create', name: Report.model_name.human)
+      redirect_to user_report_path(current_user.id, @report.id), notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new
     end
