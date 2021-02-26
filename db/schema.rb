@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_043810) do
+ActiveRecord::Schema.define(version: 2021_02_26_083228) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_043810) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 2021_02_24_043810) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "author"
     t.string "picture"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "context"
+    t.integer "created_by_id", null: false
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["created_by_id"], name: "index_comments_on_created_by_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -88,5 +99,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_043810) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users", column: "created_by_id"
   add_foreign_key "reports", "users", column: "created_by_id"
 end
