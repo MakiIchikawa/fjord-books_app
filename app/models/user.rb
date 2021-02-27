@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_many :reports, foreign_key: :created_by_id, dependent: :destroy, inverse_of: :created_by
 
+  has_many :comments, foreign_key: :created_by_id, dependent: :destroy, inverse_of: :created_by
+
   has_one_attached :avatar
 
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
