@@ -233,8 +233,10 @@ ja:
     application:
       menu: メニュー
       sign_in_as: "%{email} としてログイン中"
+      sign_in_as_github: "%{name} としてログイン中"
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:
       edit:
         title: "アカウント編集"
+        current_password: "パスワード変更を反映するには現在のパスワードを入力してください"
