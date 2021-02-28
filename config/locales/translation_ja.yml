@@ -18,9 +18,9 @@ ja:
         self_introduction: 自己紹介文
         avatar: ユーザ画像
       report:
-          title: タイトル
-          content: 本文
-          created_by: 作成者
-          created_at: 投稿日
+        title: タイトル
+        content: 本文
+        created_by: 作成者
+        created_at: 投稿日
       comment:
         content: コメント
