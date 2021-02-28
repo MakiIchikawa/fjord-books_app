@@ -14,6 +14,20 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:show] do
+    resources :reports, only: [:show] do
+      scope module: :users do
+        resources :comments
+      end
+    end
+  end
+
+  resources :books, only: [:show] do
+    scope module: :users do
+      resources :comments
+    end
+  end
+
   resources :users, only: %i[index show] do
     resource :relationships, only: %i[create destroy]
     scope module: :users do

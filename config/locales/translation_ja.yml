@@ -3,6 +3,7 @@ ja:
     models:
       book: 本  #g
       report: 日報  #g
+      comment: コメント  #g
 
     attributes:
       book:
@@ -21,3 +22,5 @@ ja:
           content: 本文
           created_by: 作成者
           created_at: 投稿日
+      comment:
+        content: コメント
