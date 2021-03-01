@@ -28,7 +28,8 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @reports%>
 <br>
+
 
 <%= link_to t('views.common.new'), new_user_report_path(current_user) %>
