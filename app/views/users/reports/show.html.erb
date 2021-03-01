@@ -25,4 +25,4 @@
 <% end %>
 <%= link_to t('views.common.back'), reports_path %>
 
-<%= render 'comments/comment', comments: @report.comments, comment: Comment.new, url: user_report_comments_path(created_by.id, @report.id) %>
+<%= render 'comments/comment', comments: @report.comments, comment: Comment.new, url: [created_by, @report] %>
