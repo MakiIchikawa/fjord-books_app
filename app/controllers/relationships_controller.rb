@@ -2,6 +2,7 @@
 
 class RelationshipsController < ApplicationController
   before_action :set_user, only: %i[create destroy]
+
   def create
     if current_user.active_relationships.create!(followee_id: @user.id)
       redirect_to @user, notice: t('controllers.relationship.notice_follow')
