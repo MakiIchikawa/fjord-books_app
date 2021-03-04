@@ -24,6 +24,6 @@ class User < ApplicationRecord
   end
 
   def following?(other_user)
-    active_relationships.find_by(followee_id: other_user.id)
+    active_relationships.find_by(followee_id: other_user.id).present?
   end
 end
