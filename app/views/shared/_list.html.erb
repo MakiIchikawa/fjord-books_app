@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:postal_code) %></th>
+      <th><%= User.human_attribute_name(:address) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% resources.each do |resource| %>
+      <tr>
+        <th>
+          <% if resource.avatar.attached? %>
+            <%= image_tag resource.avatar.variant(resize_to_fill: [30, 30])%>
+          <% end %>
+        </th>
+        <td><%= resource.email %></td>
+        <td><%= resource.name %></td>
+        <td><%= resource.postal_code %></td>
+        <td><%= resource.address %></td>
+        <td><%= link_to t('views.common.show'), resource %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate resources %>

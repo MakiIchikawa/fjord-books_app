@@ -1,0 +1,8 @@
+<h1>
+  <%= t('views.relationship.followings') %>
+</h1>
+
+<%= render 'shared/list', resources: @followings %>
+
+<%= link_to t('devise.shared.links.back'), :back %>
+

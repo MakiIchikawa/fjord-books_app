@@ -7,6 +7,12 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy, inverse_of: :follower
+  has_many :followings, through: :active_relationships, source: :followee
+
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followee_id', dependent: :destroy, inverse_of: :followee
+  has_many :followers, through: :passive_relationships, source: :follower
+
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   def self.from_omniauth(auth)
@@ -15,5 +21,9 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
     end
+  end
+
+  def following?(other_user)
+    active_relationships.find_by(followee_id: other_user.id).present?
   end
 end
