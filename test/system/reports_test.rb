@@ -4,12 +4,11 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @user = users(:alice)
+    FactoryBot.create(:feeling)
     visit root_url
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
-    @report = reports(:one)
   end
 
   test '日報の新規作成' do
