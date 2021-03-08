@@ -6,4 +6,12 @@ FactoryBot.define do
     email { 'alice@example.com' }
     password { 'password' }
   end
+
+  factory :bob, class: User do
+    name { 'bob' }
+    email { 'bob@example.com' }
+    password { 'password' }
+    provider { 'github' }
+    uid { '1' }
+  end
 end
